@@ -1,0 +1,17 @@
+clc;clear;close all;
+im = imread('flower.jpg');
+im1 = cat(3,im(:,:,1)zeros(size(im,1),size(im,2),'uint8'),zeros(size(im,1),size(im,2),'uint8')); 
+im2 = cat(3,zeros(size(im,1),size(im,2),'uint8'),im(:,:,2),zeros(size(im,1),size(im,2),'uint8'));
+im3 = cat(3,zeros(size(im,1),size(im,2),'uint8'),zeros(size(im,1),size(im,2),'uint8'),im(:,:,3));
+subplot(323)
+imshow(im)
+title('Original Image')
+subplot(322)
+imshow(im1)
+title('Red Plane')
+subplot(324)
+imshow(im2)
+title('Green Plane')
+subplot(326)
+imshow(im3)
+title('Blue Plane')
