@@ -1,13 +1,12 @@
 clc;clear;close all;
 %% Read an image
 rd = imread('img1.jpg');
-% [folder, oldBaseName, oldExt] = fileparts('img1.jpg');
-% newext = sprintf('%s.txt',oldBaseName);
-% newName = fullfile(folder, newext);
+%Writing Image with different extension
 imwrite(rd,'img1_1.png');
 
 %% Histogram of Image
 rd = imread('img1.jpg');
+%Plotting histogram of an image
 histogram(rd)
 
 %% DWT2
