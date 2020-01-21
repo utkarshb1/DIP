@@ -5,7 +5,7 @@ im = zeros(1,8);
 % |7|8|9|
 %Pixel at 6
 if in_img(i,j) < in_img(i,j+1)   im(1) = 1;else im(1) = 0;end
-%Pixel at 3
+%Pixel at 6
 if in_img(i,j) < in_img(i-1,j+1) im(2) = 1;else im(2) = 0;end
 %Pixel at 2
 if in_img(i,j) < in_img(i-1,j)   im(3) = 1;else im(3) = 0;end

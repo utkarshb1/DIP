@@ -1,3 +1,4 @@
+%BT17ECE035
 clc;clear;close all;
 %Load the image
 img = imread('img1.jpg');

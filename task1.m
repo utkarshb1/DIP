@@ -15,58 +15,46 @@ rd = imread('img1.jpg');
 imagesc(cA) 
 title('Approximation Coefficients')
 
-%% Histogram Equalization
-rd = rgb2gray(imread('img2.jpg'));
-s = size(rd);
+%% Histogram Equalization (by - BT17ECE035)
+clc;clear;close all;
+rd = rgb2gray(imread('img2.jpg')); %Reading an image
+[m,n] = size(rd);
 rd = double(rd);
-
 hist1 = zeros(1,256);
-for i = 1:s(1)          %Create histogram of the original image
-    for j = 1:s(2)
-        for k = 0:255
-            if rd(i,j) == k
-                hist1(k+1) = hist1(k+1)+1;
-            end
-        end
-    end
-end
+%Getting histogram 1
+hist1 = get_hist(rd,m,n,1,0);
 %Calculate PDF
-pdf = hist1 * (1/(s(1)*s(2)));
+pdf = hist1 * (1/(m*n));
 %Calculate CDF
 cdf = zeros(1,256);
-cdf(1) = pdf(1);
-for i = 2:255
-    cdf(i) = cdf(i-1) + pdf(i);
-end
+cdf = cumsum(pdf);
 cdf = round(255*cdf);   %Round off
 %Reconstruct the output image from cdf corresponding freq
 rn = zeros(1,256);
-for i = 1:s(1)
-    for j = 1:s(2)
-          for k = 0:255
-              if rd(i,j) == k
-                  rn(i,j) = cdf(k+1);
-              end
-          end
-    end
-end
+rn = get_hist(rd,m,n,2,cdf);
 %Creating Equalized Histogram
 hist2 = zeros(1,256);
-for i = 1:s(1)
-    for j = 1:s(2)
-        for k = 0:255
-            if rn(i,j) == k
-                hist2(k+1) = hist2(k+1)+1;
-            end
-        end
-    end
-end
+hist2 = get_hist(rn,m,n,1,0);
+%Plotting the figures
 subplot(121)
 imshow(uint8(rd));
+title('Original Image')
 subplot(122)
 imshow(uint8(rn))
+title('Modified Image')
 figure
 subplot(121)
 plot(hist1)
+title('Normal histogram')
 subplot(122)
 plot(hist2)
+title('Eualized Histogram')
+% for i = 1:m
+%     for j = 1:n
+%           for k = 0:255
+%               if rd(i,j) == k
+%                   rn(i,j) = cdf(k+1);
+%               end
+%           end
+%     end
+% end
