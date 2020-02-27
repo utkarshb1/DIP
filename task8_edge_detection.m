@@ -72,3 +72,17 @@ title('Using Sobel Filter')
 subplot(122)
 imshow(ed1)
 title('Using Canny Filter')
+%% High pass filtering
+kerhp = [-1 -1 -1;-1 8 -1;-1 -1 -1];
+kerlp = 1/9 * [1 1 1;1 1 1;1 1 1];
+im = imread('lena.png');
+hp = imfilter(im,kerhp);
+lp = imfilter(im,kerlp);
+subplot(121)
+imshow(hp)
+title('High pass filtered image')
+subplot(122)
+imshow(lp)
+title('Low pass filtered image')
+%% Watermarking using dwt2
+watermark('lena.png','sign.jpg')
