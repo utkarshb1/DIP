@@ -1,9 +1,11 @@
 function val = tob_pix(i,j,img,ig1)
+%Creating a vector of surrouding pixels
 m = [img(i,j) img(i,j+1) img(i+1,j+1) img(i+1,j) img(i+1,j-1) img(i,j-1) ...
     img(i-1,j-1) img(i-1,j) img(i-1,j+1)];
+%Finding minimum of them to replace its mapped values in image
 mn = min(m);
 p = find(m == mn);
-
+%Replacing the value
 if p == 1
     val = ig1(i,j);
 elseif p == 2

@@ -1,9 +1,5 @@
-clc;close all;
-% im = rgb2gray(imread('lena6.png'));
-% im = imread('cat.png');
-% im = [1 3 4 10;2 5 9 11 ;6 8 12 15; 7 13 14 16];
-im = [1 2 6 7;3 5 8 13;4 9 12 14;10 11 15 16];
-im = im';
+function lvec = zig_zag(mat)
+im = mat';
 [Out_vec,index] = deal(zeros(size(im,1)*size(im,2),1),1);
 for i = 1:size(im,1)
     if mod(size(im,1),2) == 0
@@ -79,4 +75,6 @@ for i = 1:size(im,1)
             end      
         end
     end
+end
+lvec = Out_vec;
 end
