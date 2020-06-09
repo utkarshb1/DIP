@@ -1,3 +1,4 @@
+% Watermarking using bit plane slicing
 % BT17ECE035
 clc;
 clear;

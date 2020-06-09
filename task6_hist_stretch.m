@@ -1,5 +1,6 @@
 clc;clear;close all;
-rd = rgb2gray(imread('img2.jpg')); %Reading an image
+% rd = rgb2gray(imread('img2.jpg')); %Reading an image
+rd = imread('op1.png');
 [m,n] = size(rd);
 [rd,hist1] = deal(double(rd),zeros(1,256));
 %Getting histogram 1 of original image
